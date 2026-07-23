@@ -100,9 +100,12 @@ def host_is_allowed(url: str) -> bool:
 
 # ---------- route ----------
 
+
 @app.route("/", methods=["POST"])
 @app.route("/guardrail", methods=["POST"])
+@app.route("/check", methods=["POST"])
 def guardrail():
+
     try:
         body = request.get_json(force=True, silent=True) or {}
         tool = body.get("tool")
